@@ -49,15 +49,31 @@ if numero_jornada:
         
         print(f"Jornada {data['filters']['matchday']} de La Liga:")
 
-        for match in data['matches']:
+        for i, match in enumerate(data['matches']):
             
             local = match['homeTeam']['name']
             visitante = match['awayTeam']['name']
-            print(f"{local} - {visitante}")
-            url = 'https://www.jornadaperfecta.com/blog/alineaciones-' + equipos[local] + '-' + equipos[visitante] + '-jornada-' + numero_jornada + '-24-25/'
-            # st.link_button(f'{local} - {visitante} Jornada {numero_jornada}', url)
-            st.page_link(url, label=f'Jornada Perfecta {local} - {visitante}', icon="🏠")
-            st.page_link("http://www.google.com", label="Google", icon="🌎")
+
+            # Determinar la columna
+            if i % 2 == 0:
+                current_col = col1
+            else:
+                current_col = col2
+
+            # Mostrar el partido y creacion de URL
+            with current_col:
+                st.write(f'{local} - {visitante}, jornada 5')
+                url = 'https://www.jornadaperfecta.com/blog/alineaciones-' + equipos[local] + '-' + equipos[visitante] + '-jornada-' + numero_jornada + '-24-25/'
+                # Creamos sub-columnas para las dos paginas
+                button_col1, button_col2 = st.columns(2)
+
+                with button_col1:
+                    st.link_button(f'{local} - {visitante}', url)
+        
+                with button_col2:
+                    st.link_button('Google', "www.google.com")
     else:
         # Handle errors
         print(f'Failed to retrieve data: {response.status_code}')
+
+
