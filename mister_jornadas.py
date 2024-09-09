@@ -56,7 +56,7 @@ if numero_jornada:
             print(f"{local} - {visitante}")
             url = 'https://www.jornadaperfecta.com/blog/alineaciones-' + equipos[local] + '-' + equipos[visitante] + '-jornada-' + numero_jornada + '-24-25/'
             # st.link_button(f'{local} - {visitante} Jornada {numero_jornada}', url)
-            # st.page_link(url, label=f'Jornada Perfecta {local} - {visitante}', icon="🏠")
+            st.page_link(url, label=f'Jornada Perfecta {local} - {visitante}', icon="🏠")
             st.page_link("http://www.google.com", label="Google", icon="🌎")
     else:
         # Handle errors
