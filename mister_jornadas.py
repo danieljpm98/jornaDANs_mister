@@ -48,7 +48,10 @@ if numero_jornada:
         data = response.json()
         
         print(f"Jornada {data['filters']['matchday']} de La Liga:")
-
+        
+        # Creamos las dos columnas
+        col1, col2 = st.columns(2)
+        
         for i, match in enumerate(data['matches']):
             
             local = match['homeTeam']['name']
